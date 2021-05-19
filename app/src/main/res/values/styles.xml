@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="roundedCornersImageView" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">10dp</item>
+    </style>
+
+    <style name="ThemeOverlay.MovieApp.Chip.Choice" parent="">
+        <item name="elevationOverlayEnabled">false</item>
+    </style>
+
+    <style name="Widget.MovieApp.Chip.Choice" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.MovieApp.Chip.Choice</item>
     </style>
 </resources>

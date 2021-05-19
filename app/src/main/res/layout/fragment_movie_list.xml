@@ -57,43 +57,59 @@
             android:id="@+id/chipGroupGenres"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:singleLine="true">
+            app:singleLine="true"
+            app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chipAction"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:tag="35"
                 android:text="Action"
-                app:chipBackgroundColor="@color/fourth_color" />
+                android:textColor="@color/chip_text_color_state"
+                app:chipBackgroundColor="@color/chip_bg_states" />
 
             <com.google.android.material.chip.Chip
+                style="@style/Widget.MovieApp.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Action"
-                app:chipBackgroundColor="@color/fourth_color" />
+                android:text="Adventure"
+                android:textColor="@color/chip_text_color_state"
+                app:chipBackgroundColor="@color/chip_bg_states" />
 
             <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Action"
-                app:chipBackgroundColor="@color/fourth_color" />
+                android:tag="16"
+                android:text="Animation"
+                android:textColor="@color/chip_text_color_state"
+                app:chipBackgroundColor="@color/chip_bg_states" />
 
             <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Action"
-                app:chipBackgroundColor="@color/fourth_color" />
+                android:textColor="@color/chip_text_color_state"
+                android:text="Comedy"
+                app:chipBackgroundColor="@color/chip_bg_states" />
 
             <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
+                android:textColor="@color/chip_text_color_state"
                 android:layout_height="wrap_content"
-                android:text="Action"
-                app:chipBackgroundColor="@color/fourth_color" />
+                android:text="Crime"
+                app:chipBackgroundColor="@color/chip_bg_states" />
 
             <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Action"
-                app:chipBackgroundColor="@color/fourth_color" />
+                android:textColor="@color/chip_text_color_state"
+                android:text="Documentary"
+                app:chipBackgroundColor="@color/chip_bg_states" />
         </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
 
