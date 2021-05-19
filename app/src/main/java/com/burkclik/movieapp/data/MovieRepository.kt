@@ -13,4 +13,10 @@ class MovieRepository {
             MovieService.retrofitService.fetchTheaterMovies(API_KEY)
         }
     }
+
+    suspend fun getMovieByGenre(): Response<MovieResponse> {
+        return withContext(Dispatchers.IO) {
+            MovieService.retrofitService.fetchMovieByGenre(API_KEY, 36)
+        }
+    }
 }

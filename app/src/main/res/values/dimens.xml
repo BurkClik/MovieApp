@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="item_theater_spacing">12dp</dimen>
+    <dimen name="item_popular_right_spacing">40dp</dimen>
+    <dimen name="item_popular_bottom_spacing">16dp</dimen>
 </resources>

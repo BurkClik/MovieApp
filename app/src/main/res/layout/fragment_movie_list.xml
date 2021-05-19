@@ -46,9 +46,10 @@
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollViewChip"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/guidelineStart"
         app:layout_constraintTop_toBottomOf="@id/textViewPopularMovies">
 
@@ -103,6 +104,7 @@
         android:layout_marginTop="40dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/guidelineStart"
         app:layout_constraintTop_toBottomOf="@id/horizontalScrollViewChip"
         app:spanCount="2"
