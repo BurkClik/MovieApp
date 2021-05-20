@@ -6,11 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.burkclik.movieapp.databinding.FragmentMovieListBinding
 import com.burkclik.movieapp.ui.movie.list.genre.GenreAdapter
 import com.burkclik.movieapp.ui.movie.list.genre.GenreDecorator
 import com.burkclik.movieapp.ui.movie.list.theater.MovieListTheaterDecorator
 import com.burkclik.movieapp.ui.movie.list.theater.TheaterAdapter
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class MovieListFragment : Fragment() {
     private var _binding: FragmentMovieListBinding? = null
@@ -47,8 +50,10 @@ class MovieListFragment : Fragment() {
             onTheaterAdapter.submitList(it)
         }
 
-        viewModel.moviesByGenre.observe(viewLifecycleOwner) {
-            popularAdapter.submitList(it)
+        lifecycleScope.launch {
+            viewModel.getPopularMovies().collectLatest {
+                popularAdapter.submitData(it)
+            }
         }
     }
 

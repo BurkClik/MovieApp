@@ -12,6 +12,7 @@ interface MovieApi {
 
     @GET("/3/discover/movie")
     suspend fun fetchMovieByGenre(
+        @Query("page") page: Int,
         @Query("api_key") apiKey: String,
         @Query("with_genres") withGenres: Int,
         @Query("sort_by") sortBy: String = "popularity.desc",

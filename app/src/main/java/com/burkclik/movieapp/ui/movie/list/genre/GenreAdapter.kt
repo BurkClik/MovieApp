@@ -2,15 +2,15 @@ package com.burkclik.movieapp.ui.movie.list.genre
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.burkclik.movieapp.IMAGE_BASE_URL
 import com.burkclik.movieapp.databinding.ItemPopularMoviesBinding
 import com.burkclik.movieapp.model.Movie
 
-class GenreAdapter : ListAdapter<Movie, GenreAdapter.GenreViewHolder>(DIFF_CALLBACK) {
+class GenreAdapter : PagingDataAdapter<Movie, GenreAdapter.GenreViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenreViewHolder {
         val binding =
@@ -19,7 +19,7 @@ class GenreAdapter : ListAdapter<Movie, GenreAdapter.GenreViewHolder>(DIFF_CALLB
     }
 
     override fun onBindViewHolder(holder: GenreViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position)!!)
     }
 
     class GenreViewHolder(private val binding: ItemPopularMoviesBinding) :

@@ -25,6 +25,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layoutAnimation="@anim/layout_animation"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,6 +58,7 @@
             android:id="@+id/chipGroupGenres"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:checkedChip="@id/chipAction"
             app:singleLine="true"
             app:singleSelection="true">
 
@@ -91,24 +93,24 @@
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/chip_text_color_state"
                 android:text="Comedy"
+                android:textColor="@color/chip_text_color_state"
                 app:chipBackgroundColor="@color/chip_bg_states" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
-                android:textColor="@color/chip_text_color_state"
                 android:layout_height="wrap_content"
                 android:text="Crime"
+                android:textColor="@color/chip_text_color_state"
                 app:chipBackgroundColor="@color/chip_bg_states" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/chip_text_color_state"
                 android:text="Documentary"
+                android:textColor="@color/chip_text_color_state"
                 app:chipBackgroundColor="@color/chip_bg_states" />
         </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
@@ -118,6 +120,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:layoutAnimation="@anim/grid_layout_animation"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
