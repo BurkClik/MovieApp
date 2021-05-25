@@ -1,5 +1,6 @@
 package com.burkclik.movieapp.api
 
+import com.burkclik.movieapp.API_KEY
 import com.burkclik.movieapp.model.Genres
 import com.burkclik.movieapp.model.MovieResponse
 import retrofit2.Response
@@ -13,10 +14,10 @@ interface MovieApi {
     @GET("/3/discover/movie")
     suspend fun fetchMovieByGenre(
         @Query("page") page: Int,
-        @Query("api_key") apiKey: String,
-        @Query("with_genres") withGenres: Int,
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("with_genres") withGenres: Int = 36,
         @Query("sort_by") sortBy: String = "popularity.desc",
-    ): Response<MovieResponse>
+    ): MovieResponse
 
     @GET("/3/genre/movie/list")
     suspend fun fetchGenres(@Query("api_key") apiKey: String): Response<Genres>

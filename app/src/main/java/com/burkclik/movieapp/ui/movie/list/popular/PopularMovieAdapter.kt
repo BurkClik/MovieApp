@@ -1,4 +1,4 @@
-package com.burkclik.movieapp.ui.movie.list.genre
+package com.burkclik.movieapp.ui.movie.list.popular
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,7 +10,8 @@ import com.burkclik.movieapp.IMAGE_BASE_URL
 import com.burkclik.movieapp.databinding.ItemPopularMoviesBinding
 import com.burkclik.movieapp.model.Movie
 
-class GenreAdapter : PagingDataAdapter<Movie, GenreAdapter.GenreViewHolder>(DIFF_CALLBACK) {
+class PopularMovieAdapter :
+    PagingDataAdapter<Movie, PopularMovieAdapter.GenreViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenreViewHolder {
         val binding =

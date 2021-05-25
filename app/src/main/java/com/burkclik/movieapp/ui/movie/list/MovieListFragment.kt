@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.burkclik.movieapp.api.MovieService
+import com.burkclik.movieapp.data.MovieRepository
+import com.burkclik.movieapp.data.PopularMovieRepository
 import com.burkclik.movieapp.databinding.FragmentMovieListBinding
-import com.burkclik.movieapp.ui.movie.list.genre.GenreAdapter
-import com.burkclik.movieapp.ui.movie.list.genre.GenreDecorator
-import com.burkclik.movieapp.ui.movie.list.theater.MovieListTheaterDecorator
-import com.burkclik.movieapp.ui.movie.list.theater.TheaterAdapter
+import com.burkclik.movieapp.ui.movie.list.popular.PopularMovieAdapter
+import com.burkclik.movieapp.ui.movie.list.popular.PopularMovieDecorator
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -19,39 +20,35 @@ class MovieListFragment : Fragment() {
     private var _binding: FragmentMovieListBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: MovieListViewModel by viewModels()
+    private val viewModel: MovieListViewModel by viewModels {
+        MovieListViewModelFactory(
+            movieRepository = MovieRepository(MovieService()),
+            popularMovieRepository = PopularMovieRepository(MovieService())
+        )
+    }
 
-    private val onTheaterAdapter = TheaterAdapter()
-    private val popularAdapter = GenreAdapter()
+    private val popularAdapter = PopularMovieAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMovieListBinding.inflate(inflater, container, false)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.recyclerViewInTheater.apply {
-            adapter = onTheaterAdapter
-            addItemDecoration(MovieListTheaterDecorator())
-        }
-
         binding.recyclerViewPopularMovies.apply {
             adapter = popularAdapter
-            addItemDecoration(GenreDecorator())
-        }
-
-        viewModel.onTheaterMovies.observe(viewLifecycleOwner) {
-            onTheaterAdapter.submitList(it)
+            addItemDecoration(PopularMovieDecorator())
         }
 
         lifecycleScope.launch {
-            viewModel.getPopularMovies().collectLatest {
+            viewModel.getPopular().collectLatest {
                 popularAdapter.submitData(it)
             }
         }

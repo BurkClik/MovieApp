@@ -8,22 +8,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 
-class MovieRepository {
+class MovieRepository(private val movieService: MovieService) {
     suspend fun getTheaterMovies(): Response<MovieResponse> {
         return withContext(Dispatchers.IO) {
-            MovieService.retrofitService.fetchTheaterMovies(API_KEY)
-        }
-    }
-
-    suspend fun getMovieByGenre(position: Int): Response<MovieResponse> {
-        return withContext(Dispatchers.IO) {
-            MovieService.retrofitService.fetchMovieByGenre(position, API_KEY, 36)
+            movieService.retrofitService.fetchTheaterMovies(API_KEY)
         }
     }
 
     suspend fun getGenres(): Response<Genres> {
         return withContext(Dispatchers.IO) {
-            MovieService.retrofitService.fetchGenres(API_KEY)
+            movieService.retrofitService.fetchGenres(API_KEY)
         }
     }
 }

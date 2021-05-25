@@ -10,7 +10,7 @@ import com.burkclik.movieapp.IMAGE_BASE_URL
 import com.burkclik.movieapp.databinding.ItemInTheaterBinding
 import com.burkclik.movieapp.model.Movie
 
-class TheaterAdapter : ListAdapter<Movie, TheaterAdapter.TheaterViewHolder>(
+class MovieListTheaterAdapter : ListAdapter<Movie, MovieListTheaterAdapter.TheaterViewHolder>(
     DIFF_CALLBACK
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TheaterViewHolder {

@@ -1,11 +1,11 @@
-package com.burkclik.movieapp.ui.movie.list.genre
+package com.burkclik.movieapp.ui.movie.list.popular
 
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.burkclik.movieapp.R
 
-class GenreDecorator : RecyclerView.ItemDecoration() {
+class PopularMovieDecorator : RecyclerView.ItemDecoration() {
     override fun getItemOffsets(
         outRect: Rect,
         view: View,
