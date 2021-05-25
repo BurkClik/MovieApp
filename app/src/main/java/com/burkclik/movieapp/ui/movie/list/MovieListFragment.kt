@@ -7,25 +7,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.burkclik.movieapp.api.MovieService
-import com.burkclik.movieapp.data.MovieRepository
-import com.burkclik.movieapp.data.PopularMovieRepository
 import com.burkclik.movieapp.databinding.FragmentMovieListBinding
 import com.burkclik.movieapp.ui.movie.list.popular.PopularMovieAdapter
 import com.burkclik.movieapp.ui.movie.list.popular.PopularMovieDecorator
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MovieListFragment : Fragment() {
     private var _binding: FragmentMovieListBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: MovieListViewModel by viewModels {
-        MovieListViewModelFactory(
-            movieRepository = MovieRepository(MovieService()),
-            popularMovieRepository = PopularMovieRepository(MovieService())
-        )
-    }
+    private val viewModel: MovieListViewModel by viewModels()
 
     private val popularAdapter = PopularMovieAdapter()
 

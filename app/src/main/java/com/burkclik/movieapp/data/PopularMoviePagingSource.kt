@@ -2,13 +2,13 @@ package com.burkclik.movieapp.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.burkclik.movieapp.api.MovieService
+import com.burkclik.movieapp.api.MovieApi
 import com.burkclik.movieapp.model.Movie
 import retrofit2.HttpException
 import java.io.IOException
 
 
-class PopularMoviePagingSource(private val movieService: MovieService) :
+class PopularMoviePagingSource(private val movieApi: MovieApi) :
     PagingSource<Int, Movie>() {
     override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
@@ -21,7 +21,7 @@ class PopularMoviePagingSource(private val movieService: MovieService) :
         val position = params.key ?: STARTING_INDEX
         return try {
             val response =
-                movieService.retrofitService.fetchMovieByGenre(position)
+                movieApi.fetchMovieByGenre(position)
             val movies = response.results
             val nextKey = if (movies.isEmpty()) {
                 null

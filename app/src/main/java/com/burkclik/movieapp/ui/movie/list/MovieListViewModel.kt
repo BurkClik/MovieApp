@@ -10,10 +10,13 @@ import androidx.paging.cachedIn
 import com.burkclik.movieapp.data.MovieRepository
 import com.burkclik.movieapp.data.PopularMovieRepository
 import com.burkclik.movieapp.model.Movie
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MovieListViewModel(
+@HiltViewModel
+class MovieListViewModel @Inject constructor(
     private val movieRepository: MovieRepository,
     private val popularMovieRepository: PopularMovieRepository
 ) : ViewModel() {
