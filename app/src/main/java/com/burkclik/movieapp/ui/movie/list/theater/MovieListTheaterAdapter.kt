@@ -5,8 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.burkclik.movieapp.IMAGE_BASE_URL
 import com.burkclik.movieapp.databinding.ItemInTheaterBinding
 import com.burkclik.movieapp.model.Movie
 
@@ -27,9 +25,7 @@ class MovieListTheaterAdapter : ListAdapter<Movie, MovieListTheaterAdapter.Theat
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(movie: Movie) {
-            Glide.with(binding.root.context)
-                .load(IMAGE_BASE_URL + movie.posterPath)
-                .into(binding.imageViewInTheaterMovies)
+            binding.movie = movie
         }
     }
 
