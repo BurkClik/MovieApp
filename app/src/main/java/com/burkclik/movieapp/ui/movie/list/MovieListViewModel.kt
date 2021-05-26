@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.burkclik.movieapp.data.MovieRepository
-import com.burkclik.movieapp.data.PopularMovieRepository
+import com.burkclik.movieapp.infra.Navigation
 import com.burkclik.movieapp.model.Movie
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
@@ -17,13 +17,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieListViewModel @Inject constructor(
-    private val movieRepository: MovieRepository,
-    private val popularMovieRepository: PopularMovieRepository
+    private val movieRepository: MovieRepository
 ) : ViewModel() {
     private val _onTheaterMovies = MutableLiveData<List<Movie>?>()
     val onTheaterMovies: LiveData<List<Movie>?> = _onTheaterMovies
 
     var popularMovies: Flow<PagingData<Movie>>? = null
+
+    val navigation = Navigation()
+
+    val itemClickListener: (Movie) -> Unit = {
+        val action = MovieListFragmentDirections.toMovieDetail(it.id)
+        navigation.navigate(action)
+    }
 
     init {
         Log.i("ViewModel", "viewModel init...")
@@ -41,7 +47,7 @@ class MovieListViewModel @Inject constructor(
             return lastResult
         }
         val newResult: Flow<PagingData<Movie>> =
-            popularMovieRepository.getPopularMovies().cachedIn(viewModelScope)
+            movieRepository.getPopularMovies().cachedIn(viewModelScope)
 
         popularMovies = newResult
         return newResult

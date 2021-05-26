@@ -9,5 +9,21 @@
         android:id="@+id/movieListFragment"
         android:name="com.burkclik.movieapp.ui.movie.list.MovieListFragment"
         android:label="fragment_movie_list"
-        tools:layout="@layout/fragment_movie_list" />
+        tools:layout="@layout/fragment_movie_list">
+        <action
+            android:id="@+id/toMovieDetail"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.burkclik.movieapp.ui.movie.detail.MovieDetailFragment"
+        android:label="MovieDetailFragment">
+        <action
+            android:id="@+id/action_movieDetailFragment_self"
+            app:destination="@id/movieDetailFragment" />
+        <argument
+            android:name="movieId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 </navigation>

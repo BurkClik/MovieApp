@@ -2,9 +2,11 @@ package com.burkclik.movieapp.api
 
 import com.burkclik.movieapp.API_KEY
 import com.burkclik.movieapp.model.Genres
+import com.burkclik.movieapp.model.MovieDetail
 import com.burkclik.movieapp.model.MovieResponse
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MovieApi {
@@ -21,4 +23,10 @@ interface MovieApi {
 
     @GET("/3/genre/movie/list")
     suspend fun fetchGenres(@Query("api_key") apiKey: String): Response<Genres>
+
+    @GET("/3/movie/{movie_id}")
+    suspend fun fetchMovieDetail(
+        @Path("movie_id") movieId: Int,
+        @Query("api_key") apiKey: String = API_KEY,
+    ): MovieDetail
 }
