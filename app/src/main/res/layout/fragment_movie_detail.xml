@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout>
 
     <data>
 
@@ -10,173 +8,232 @@
             type="com.burkclik.movieapp.ui.movie.detail.MovieDetailViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/primary_color">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageViewImdb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:elevation="1dp"
-            app:layout_constraintBottom_toBottomOf="@id/imageViewFavourite"
-            app:layout_constraintStart_toStartOf="@id/guidelineStart"
-            app:layout_constraintTop_toTopOf="@id/imageViewFavourite"
-            app:srcCompat="@drawable/ic_imdb_logo" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageViewFavourite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:elevation="1dp"
-            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_favourite_border" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageViewImdb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="1dp"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewFavourite"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toTopOf="@id/imageViewFavourite"
+                app:srcCompat="@drawable/ic_imdb_logo" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageViewMovieBackdrop"
-            android:layout_width="0dp"
-            android:layout_height="240dp"
-            android:scaleType="centerCrop"
-            app:imageUrl="@{viewModel.movie.backdropPath}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/backgrounds/scenic" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageViewFavourite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:elevation="1dp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_favourite_border" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageViewMoviePoster"
-            android:layout_width="100dp"
-            android:layout_height="140dp"
-            android:layout_marginEnd="24dp"
-            android:scaleType="centerCrop"
-            app:imageUrl="@{viewModel.movie.posterPath}"
-            app:layout_constraintBottom_toBottomOf="@id/textViewTagline"
-            app:layout_constraintEnd_toStartOf="@id/textViewTagline"
-            app:layout_constraintStart_toStartOf="@id/guidelineStart"
-            app:shapeAppearanceOverlay="@style/roundedCornersImageView"
-            tools:src="@tools:sample/backgrounds/scenic" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageViewMovieBackdrop"
+                android:layout_width="0dp"
+                android:layout_height="240dp"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{viewModel.movie.backdropPath}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic" />
 
-        <TextView
-            android:id="@+id/textViewTagline"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/josefin_sans_light"
-            android:text="@{viewModel.movie.tagline}"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-            app:layout_constraintStart_toEndOf="@id/imageViewMoviePoster"
-            app:layout_constraintTop_toBottomOf="@id/textViewMovieTitle"
-            tools:text="See our family. And feel better about yours." />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageViewMoviePoster"
+                android:layout_width="100dp"
+                android:layout_height="140dp"
+                android:layout_marginEnd="24dp"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{viewModel.movie.posterPath}"
+                app:layout_constraintBottom_toBottomOf="@id/textViewTagline"
+                app:layout_constraintEnd_toStartOf="@id/textViewTagline"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:shapeAppearanceOverlay="@style/roundedCornersImageView"
+                tools:src="@tools:sample/backgrounds/scenic" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageViewVoteIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintStart_toStartOf="@id/guidelineStart"
-            app:layout_constraintTop_toBottomOf="@id/imageViewMoviePoster"
-            app:srcCompat="@drawable/ic_vote" />
+            <TextView
+                android:id="@+id/textViewTagline"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/josefin_sans_light"
+                android:text="@{viewModel.movie.tagline}"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toEndOf="@id/imageViewMoviePoster"
+                app:layout_constraintTop_toBottomOf="@id/textViewMovieTitle"
+                tools:text="See our family. And feel better about yours." />
 
-        <TextView
-            android:id="@+id/textViewVote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/imageViewVoteIcon"
-            app:layout_constraintStart_toEndOf="@id/imageViewVoteIcon"
-            app:layout_constraintTop_toTopOf="@id/imageViewVoteIcon"
-            tools:text="7.0" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageViewVoteIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@id/imageViewMoviePoster"
+                app:srcCompat="@drawable/ic_vote" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageViewRuntimeIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            app:layout_constraintBottom_toBottomOf="@id/textViewVote"
-            app:layout_constraintStart_toEndOf="@id/textViewVote"
-            app:layout_constraintTop_toTopOf="@id/textViewVote"
-            app:srcCompat="@drawable/ic_runtime" />
+            <TextView
+                android:id="@+id/textViewVote"
+                convertToString="@{viewModel.movie.voteAverage}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewVoteIcon"
+                app:layout_constraintStart_toEndOf="@id/imageViewVoteIcon"
+                app:layout_constraintTop_toTopOf="@id/imageViewVoteIcon"
+                tools:text="7.0" />
 
-        <TextView
-            android:id="@+id/textViewRuntime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/imageViewRuntimeIcon"
-            app:layout_constraintStart_toEndOf="@id/imageViewRuntimeIcon"
-            app:layout_constraintTop_toTopOf="@id/imageViewRuntimeIcon"
-            tools:text="87" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageViewRuntimeIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                app:layout_constraintBottom_toBottomOf="@id/textViewVote"
+                app:layout_constraintStart_toEndOf="@id/textViewVote"
+                app:layout_constraintTop_toTopOf="@id/textViewVote"
+                app:srcCompat="@drawable/ic_runtime" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageViewRevenueIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            app:layout_constraintBottom_toBottomOf="@id/textViewRuntime"
-            app:layout_constraintStart_toEndOf="@id/textViewRuntime"
-            app:layout_constraintTop_toTopOf="@id/textViewRuntime"
-            app:srcCompat="@drawable/ic_revenue" />
+            <TextView
+                android:id="@+id/textViewRuntime"
+                convertToString="@{viewModel.movie.runtime}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewRuntimeIcon"
+                app:layout_constraintStart_toEndOf="@id/imageViewRuntimeIcon"
+                app:layout_constraintTop_toTopOf="@id/imageViewRuntimeIcon"
+                tools:text="87" />
 
-        <TextView
-            android:id="@+id/textViewRevenue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/imageViewRevenueIcon"
-            app:layout_constraintStart_toEndOf="@id/imageViewRevenueIcon"
-            app:layout_constraintTop_toTopOf="@id/imageViewRevenueIcon"
-            tools:text="58234982" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageViewRevenueIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                app:layout_constraintBottom_toBottomOf="@id/textViewRuntime"
+                app:layout_constraintStart_toEndOf="@id/textViewRuntime"
+                app:layout_constraintTop_toTopOf="@id/textViewRuntime"
+                app:srcCompat="@drawable/ic_revenue" />
 
-        <TextView
-            android:id="@+id/textViewMovieTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/montserrat"
-            android:text="@{viewModel.movie.title}"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-            app:layout_constraintStart_toStartOf="@id/textViewTagline"
-            app:layout_constraintTop_toBottomOf="@id/imageViewMovieBackdrop"
-            tools:text="The Simpsons Movie" />
+            <TextView
+                android:id="@+id/textViewRevenue"
+                convertToString="@{viewModel.movie.revenue}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewRevenueIcon"
+                app:layout_constraintStart_toEndOf="@id/imageViewRevenueIcon"
+                app:layout_constraintTop_toTopOf="@id/imageViewRevenueIcon"
+                tools:text="58234982" />
 
-        <TextView
-            android:id="@+id/textViewOverview"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/josefin_sans"
-            android:text="@{viewModel.movie.overview}"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-            app:layout_constraintStart_toStartOf="@id/guidelineStart"
-            app:layout_constraintTop_toBottomOf="@id/textViewRevenue"
-            tools:text="After Homer accidentally pollutes the town's water supply, Springfield is encased in a gigantic dome by the EPA and the Simpsons are declared fugitives." />
+            <TextView
+                android:id="@+id/textViewMovieTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/montserrat"
+                android:text="@{viewModel.movie.title}"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/textViewTagline"
+                app:layout_constraintTop_toBottomOf="@id/imageViewMovieBackdrop"
+                tools:text="The Simpsons Movie" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="24dp" />
+            <TextView
+                android:id="@+id/textViewOverview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/josefin_sans"
+                android:text="@{viewModel.movie.overview}"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@id/textViewRevenue"
+                tools:text="After Homer accidentally pollutes the town's water supply, Springfield is encased in a gigantic dome by the EPA and the Simpsons are declared fugitives." />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineEnd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_end="24dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/textViewCast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Cast"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@id/textViewOverview" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewCast"
+                credits="@{viewModel.creditsMovie}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@id/textViewCast"
+                tools:listitem="@layout/item_cast_card" />
+
+            <TextView
+                android:id="@+id/textViewSimilarMovies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Similar Movies"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@id/recyclerViewRelatedMovies"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@id/recyclerViewCast" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewRelatedMovies"
+                inTheater="@{viewModel.relatedMovies}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@id/textViewSimilarMovies"
+                tools:listitem="@layout/item_in_theater" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="24dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="24dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
