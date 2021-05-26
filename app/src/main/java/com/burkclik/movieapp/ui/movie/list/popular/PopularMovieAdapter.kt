@@ -5,8 +5,6 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.burkclik.movieapp.IMAGE_BASE_URL
 import com.burkclik.movieapp.databinding.ItemPopularMoviesBinding
 import com.burkclik.movieapp.model.Movie
 
@@ -31,9 +29,7 @@ class PopularMovieAdapter :
     ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
-            Glide.with(binding.root.context)
-                .load(IMAGE_BASE_URL + movie.posterPath)
-                .into(binding.imageViewPopularItem)
+            binding.movie = movie
 
             binding.imageViewPopularItem.setOnClickListener {
                 itemClickListener(movie)
