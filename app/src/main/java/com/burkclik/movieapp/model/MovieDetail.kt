@@ -26,5 +26,7 @@ data class MovieDetail(
     @SerializedName("poster_path")
     val posterPath: String,
     @SerializedName("backdrop_path")
-    val backdropPath: String
+    val backdropPath: String,
+    @SerializedName("revenue")
+    val revenue: Int
 )

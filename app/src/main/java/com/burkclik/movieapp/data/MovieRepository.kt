@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.burkclik.movieapp.API_KEY
 import com.burkclik.movieapp.api.MovieApi
+import com.burkclik.movieapp.model.CastResponse
 import com.burkclik.movieapp.model.Movie
 import com.burkclik.movieapp.model.MovieDetail
 import com.burkclik.movieapp.model.MovieResponse
@@ -15,6 +16,8 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class MovieRepository @Inject constructor(private val movieApi: MovieApi) {
+    // TODO: Research about Repository.
+
     suspend fun getTheaterMovies(): Response<MovieResponse> {
         return withContext(Dispatchers.IO) {
             movieApi.fetchTheaterMovies(API_KEY)
@@ -24,6 +27,18 @@ class MovieRepository @Inject constructor(private val movieApi: MovieApi) {
     suspend fun getMovieDetail(movieId: Int): MovieDetail {
         return withContext(Dispatchers.IO) {
             movieApi.fetchMovieDetail(movieId = movieId)
+        }
+    }
+
+    suspend fun getRelatedMovies(movieId: Int): MovieResponse {
+        return withContext(Dispatchers.IO) {
+            movieApi.fetchRelatedMovies(movieId = movieId)
+        }
+    }
+
+    suspend fun getCreditsMovie(movieId: Int): CastResponse {
+        return withContext(Dispatchers.IO) {
+            movieApi.fetchMovieCredits(movieId = movieId)
         }
     }
 
