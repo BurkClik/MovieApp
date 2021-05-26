@@ -21,19 +21,7 @@ fun RecyclerView.inTheaterMovies(movies: List<Movie>?) {
     if (itemDecorationCount == 0) {
         addItemDecoration(MovieListTheaterDecorator())
     }
-
     theaterAdapter.submitList(movies.orEmpty())
-}
-
-@BindingAdapter("credits")
-fun RecyclerView.credits(credits: List<Credits>?) {
-    adapter = castAdapter
-
-    if (itemDecorationCount == 0) {
-        addItemDecoration(MovieListTheaterDecorator())
-    }
-
-    castAdapter.submitList(credits)
 }
 
 @BindingAdapter("app:imageUrl")
@@ -48,4 +36,14 @@ fun ImageView.imageUrl(imageUrl: String?) {
 @BindingAdapter("convertToString")
 fun TextView.convertToString(data: Any?) {
     this.text = data.toString()
+}
+
+@BindingAdapter("credits")
+fun RecyclerView.credits(credits: List<Credits>?) {
+    adapter = castAdapter
+
+    if (itemDecorationCount == 0) {
+        addItemDecoration(MovieListTheaterDecorator())
+    }
+    castAdapter.submitList(credits)
 }

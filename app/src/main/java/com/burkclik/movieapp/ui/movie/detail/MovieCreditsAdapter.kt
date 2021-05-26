@@ -5,8 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.burkclik.movieapp.IMAGE_BASE_URL
 import com.burkclik.movieapp.databinding.ItemCastCardBinding
 import com.burkclik.movieapp.model.Credits
 
@@ -26,15 +24,9 @@ class MovieCreditsAdapter : ListAdapter<Credits, MovieCreditsAdapter.MovieCredit
 
     class MovieCreditViewHolder(private val binding: ItemCastCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
         fun bind(credits: Credits) {
-            Glide.with(binding.root.context)
-                .load(IMAGE_BASE_URL + credits.profilePath)
-                .circleCrop()
-                .into(binding.imageViewCastPhoto)
-
-            binding.textViewCastName.text = credits.name
-            binding.textViewCastMovieName.text = credits.character
+            binding.credit = credits
+            binding.executePendingBindings()
         }
     }
 
