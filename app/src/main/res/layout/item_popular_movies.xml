@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="viewState"
-            type="com.burkclik.movieapp.ui.movie.list.MovieListViewState" />
+            name="viewModel"
+            type="com.burkclik.movieapp.ui.movie.list.MovieListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
