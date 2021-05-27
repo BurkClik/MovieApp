@@ -1,4 +1,4 @@
-package com.burkclik.movieapp.model
+package com.burkclik.movieapp.data.remote.model
 
 data class Genres(
     val id: Int,

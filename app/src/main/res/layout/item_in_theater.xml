@@ -5,7 +5,7 @@
 
         <variable
             name="movie"
-            type="com.burkclik.movieapp.model.Movie" />
+            type="com.burkclik.movieapp.data.remote.model.Movie" />
     </data>
 
     <com.google.android.material.imageview.ShapeableImageView xmlns:android="http://schemas.android.com/apk/res/android"

@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.burkclik.movieapp.data.remote.model.Movie
 import com.burkclik.movieapp.databinding.ItemInTheaterBinding
-import com.burkclik.movieapp.model.Movie
 
 class MovieListTheaterAdapter : ListAdapter<Movie, MovieListTheaterAdapter.TheaterViewHolder>(
     DIFF_CALLBACK

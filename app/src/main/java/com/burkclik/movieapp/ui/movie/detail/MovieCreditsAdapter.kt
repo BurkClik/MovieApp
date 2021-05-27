@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.burkclik.movieapp.data.remote.model.Credits
 import com.burkclik.movieapp.databinding.ItemCastCardBinding
-import com.burkclik.movieapp.model.Credits
 
 class MovieCreditsAdapter : ListAdapter<Credits, MovieCreditsAdapter.MovieCreditViewHolder>(
     DIFF_UTIL

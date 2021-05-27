@@ -5,10 +5,11 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.burkclik.movieapp.API_KEY
 import com.burkclik.movieapp.api.MovieApi
-import com.burkclik.movieapp.model.CastResponse
-import com.burkclik.movieapp.model.Movie
-import com.burkclik.movieapp.model.MovieDetail
-import com.burkclik.movieapp.model.MovieResponse
+import com.burkclik.movieapp.data.remote.PopularMoviePagingSource
+import com.burkclik.movieapp.data.remote.model.CastResponse
+import com.burkclik.movieapp.data.remote.model.Movie
+import com.burkclik.movieapp.data.remote.model.MovieDetail
+import com.burkclik.movieapp.data.remote.model.MovieResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext

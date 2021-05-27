@@ -5,7 +5,7 @@
 
         <variable
             name="credit"
-            type="com.burkclik.movieapp.model.Credits" />
+            type="com.burkclik.movieapp.data.remote.model.Credits" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -21,6 +21,7 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_gravity="center"
+            android:scaleType="centerCrop"
             app:imageUrl="@{credit.profilePath}"
             app:shapeAppearanceOverlay="@style/Widget.MovieApp.RoundedImageView"
             tools:src="@tools:sample/backgrounds/scenic" />

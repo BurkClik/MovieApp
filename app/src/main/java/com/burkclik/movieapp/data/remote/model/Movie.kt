@@ -1,4 +1,4 @@
-package com.burkclik.movieapp.model
+package com.burkclik.movieapp.data.remote.model
 
 import com.google.gson.annotations.SerializedName
 

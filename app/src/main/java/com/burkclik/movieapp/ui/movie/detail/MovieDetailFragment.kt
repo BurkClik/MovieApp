@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.burkclik.movieapp.common.navigation.NavigationObserver
 import com.burkclik.movieapp.databinding.FragmentMovieDetailBinding
-import com.burkclik.movieapp.infra.NavigationObserver
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

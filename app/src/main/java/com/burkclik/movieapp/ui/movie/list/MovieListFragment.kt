@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.burkclik.movieapp.common.navigation.NavigationObserver
 import com.burkclik.movieapp.databinding.FragmentMovieListBinding
-import com.burkclik.movieapp.infra.NavigationObserver
 import com.burkclik.movieapp.ui.movie.list.popular.PopularMovieAdapter
 import com.burkclik.movieapp.ui.movie.list.popular.PopularMovieDecorator
 import dagger.hilt.android.AndroidEntryPoint

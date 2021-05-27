@@ -1,4 +1,4 @@
-package com.burkclik.movieapp
+package com.burkclik.movieapp.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

@@ -7,7 +7,7 @@
 
         <variable
             name="movie"
-            type="com.burkclik.movieapp.model.Movie" />
+            type="com.burkclik.movieapp.data.remote.model.Movie" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

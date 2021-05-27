@@ -5,8 +5,8 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.burkclik.movieapp.model.Credits
-import com.burkclik.movieapp.model.Movie
+import com.burkclik.movieapp.data.remote.model.Credits
+import com.burkclik.movieapp.data.remote.model.Movie
 import com.burkclik.movieapp.ui.movie.detail.MovieCreditsAdapter
 import com.burkclik.movieapp.ui.movie.list.theater.MovieListTheaterAdapter
 import com.burkclik.movieapp.ui.movie.list.theater.MovieListTheaterDecorator

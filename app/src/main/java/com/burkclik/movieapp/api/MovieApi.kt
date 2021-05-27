@@ -1,10 +1,10 @@
 package com.burkclik.movieapp.api
 
 import com.burkclik.movieapp.API_KEY
-import com.burkclik.movieapp.model.CastResponse
-import com.burkclik.movieapp.model.Genres
-import com.burkclik.movieapp.model.MovieDetail
-import com.burkclik.movieapp.model.MovieResponse
+import com.burkclik.movieapp.data.remote.model.CastResponse
+import com.burkclik.movieapp.data.remote.model.Genres
+import com.burkclik.movieapp.data.remote.model.MovieDetail
+import com.burkclik.movieapp.data.remote.model.MovieResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

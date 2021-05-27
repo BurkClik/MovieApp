@@ -1,4 +1,4 @@
-package com.burkclik.movieapp.infra
+package com.burkclik.movieapp.common.navigation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

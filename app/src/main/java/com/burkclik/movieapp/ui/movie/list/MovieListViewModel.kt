@@ -7,9 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.burkclik.movieapp.common.navigation.Navigation
 import com.burkclik.movieapp.data.MovieRepository
-import com.burkclik.movieapp.infra.Navigation
-import com.burkclik.movieapp.model.Movie
+import com.burkclik.movieapp.data.remote.model.Movie
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch

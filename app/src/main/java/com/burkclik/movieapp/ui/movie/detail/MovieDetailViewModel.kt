@@ -2,9 +2,9 @@ package com.burkclik.movieapp.ui.movie.detail
 
 import androidx.lifecycle.*
 import com.burkclik.movieapp.data.MovieRepository
-import com.burkclik.movieapp.model.Credits
-import com.burkclik.movieapp.model.Movie
-import com.burkclik.movieapp.model.MovieDetail
+import com.burkclik.movieapp.data.remote.model.Credits
+import com.burkclik.movieapp.data.remote.model.Movie
+import com.burkclik.movieapp.data.remote.model.MovieDetail
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
