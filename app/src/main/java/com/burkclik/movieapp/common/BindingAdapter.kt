@@ -1,10 +1,11 @@
-package com.burkclik.movieapp
+package com.burkclik.movieapp.common
 
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.burkclik.movieapp.IMAGE_BASE_URL
 import com.burkclik.movieapp.data.remote.model.Credits
 import com.burkclik.movieapp.data.remote.model.Movie
 import com.burkclik.movieapp.ui.movie.detail.MovieCreditsAdapter
@@ -24,6 +25,16 @@ fun RecyclerView.inTheaterMovies(movies: List<Movie>?) {
     theaterAdapter.submitList(movies.orEmpty())
 }
 
+@BindingAdapter("credits")
+fun RecyclerView.credits(credits: List<Credits>?) {
+    adapter = castAdapter
+
+    if (itemDecorationCount == 0) {
+        addItemDecoration(MovieListTheaterDecorator())
+    }
+    castAdapter.submitList(credits)
+}
+
 @BindingAdapter("app:imageUrl")
 fun ImageView.imageUrl(imageUrl: String?) {
     imageUrl?.let {
@@ -36,14 +47,4 @@ fun ImageView.imageUrl(imageUrl: String?) {
 @BindingAdapter("convertToString")
 fun TextView.convertToString(data: Any?) {
     this.text = data.toString()
-}
-
-@BindingAdapter("credits")
-fun RecyclerView.credits(credits: List<Credits>?) {
-    adapter = castAdapter
-
-    if (itemDecorationCount == 0) {
-        addItemDecoration(MovieListTheaterDecorator())
-    }
-    castAdapter.submitList(credits)
 }

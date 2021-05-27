@@ -1,4 +1,4 @@
-package com.burkclik.movieapp.api
+package com.burkclik.movieapp.common
 
 import com.burkclik.movieapp.API_KEY
 import com.burkclik.movieapp.data.remote.model.CastResponse
@@ -11,8 +11,6 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MovieApi {
-    // TODO: Check endpoint. If there are similar urls, make efficient requestes.
-
     @GET("/3/movie/now_playing")
     suspend fun fetchTheaterMovies(@Query("api_key") apiKey: String): Response<MovieResponse>
 

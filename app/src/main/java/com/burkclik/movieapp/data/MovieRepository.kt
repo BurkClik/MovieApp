@@ -4,7 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.burkclik.movieapp.API_KEY
-import com.burkclik.movieapp.api.MovieApi
+import com.burkclik.movieapp.common.MovieApi
 import com.burkclik.movieapp.data.remote.PopularMoviePagingSource
 import com.burkclik.movieapp.data.remote.model.CastResponse
 import com.burkclik.movieapp.data.remote.model.Movie
@@ -17,8 +17,6 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class MovieRepository @Inject constructor(private val movieApi: MovieApi) {
-    // TODO: Research about Repository.
-
     suspend fun getTheaterMovies(): Response<MovieResponse> {
         return withContext(Dispatchers.IO) {
             movieApi.fetchTheaterMovies(API_KEY)

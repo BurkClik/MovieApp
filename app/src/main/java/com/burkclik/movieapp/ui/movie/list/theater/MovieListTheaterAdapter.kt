@@ -11,6 +11,7 @@ import com.burkclik.movieapp.databinding.ItemInTheaterBinding
 class MovieListTheaterAdapter : ListAdapter<Movie, MovieListTheaterAdapter.TheaterViewHolder>(
     DIFF_CALLBACK
 ) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TheaterViewHolder {
         val binding =
             ItemInTheaterBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -23,9 +24,9 @@ class MovieListTheaterAdapter : ListAdapter<Movie, MovieListTheaterAdapter.Theat
 
     class TheaterViewHolder(private val binding: ItemInTheaterBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
         fun bind(movie: Movie) {
             binding.movie = movie
+            binding.executePendingBindings()
         }
     }
 

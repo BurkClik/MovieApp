@@ -2,7 +2,7 @@ package com.burkclik.movieapp.data.remote
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.burkclik.movieapp.api.MovieApi
+import com.burkclik.movieapp.common.MovieApi
 import com.burkclik.movieapp.data.remote.model.Movie
 import retrofit2.HttpException
 import java.io.IOException

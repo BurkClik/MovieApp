@@ -2,7 +2,7 @@ package com.burkclik.movieapp.di
 
 import android.app.Application
 import com.burkclik.movieapp.BASE_URL
-import com.burkclik.movieapp.api.MovieApi
+import com.burkclik.movieapp.common.MovieApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +15,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object NetworkModule {
 
     @Singleton
     @Provides
