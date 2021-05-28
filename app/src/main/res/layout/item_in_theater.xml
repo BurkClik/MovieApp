@@ -4,19 +4,24 @@
     <data>
 
         <variable
-            name="movie"
+            name="baseModel"
             type="com.burkclik.movieapp.data.remote.model.Movie" />
     </data>
 
-    <com.google.android.material.imageview.ShapeableImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/imageViewInTheaterMovies"
         android:layout_width="104dp"
-        android:layout_height="146dp"
-        android:scaleType="centerCrop"
-        app:imageUrl="@{movie.posterPath}"
-        app:shapeAppearanceOverlay="@style/roundedCornersImageView"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        android:layout_height="146dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewInTheaterMovies"
+            android:layout_width="104dp"
+            app:imageUrl="@{baseModel.posterPath}"
+            android:layout_height="146dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/roundedCornersImageView"
+            tools:src="@tools:sample/backgrounds/scenic" />
+    </FrameLayout>
 </layout>
 

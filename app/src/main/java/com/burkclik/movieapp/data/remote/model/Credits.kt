@@ -1,5 +1,6 @@
 package com.burkclik.movieapp.data.remote.model
 
+import com.burkclik.movieapp.common.BaseModel
 import com.google.gson.annotations.SerializedName
 
 data class Credits(
@@ -9,4 +10,4 @@ data class Credits(
     val character: String,
     @SerializedName("profile_path")
     val profilePath: String
-)
+) : BaseModel()

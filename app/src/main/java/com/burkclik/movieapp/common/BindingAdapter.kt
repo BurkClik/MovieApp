@@ -5,18 +5,14 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.burkclik.movieapp.IMAGE_BASE_URL
+import com.burkclik.movieapp.R
 import com.burkclik.movieapp.data.remote.model.Credits
 import com.burkclik.movieapp.data.remote.model.Movie
-import com.burkclik.movieapp.ui.movie.detail.MovieCreditsAdapter
-import com.burkclik.movieapp.ui.movie.list.theater.MovieListTheaterAdapter
 import com.burkclik.movieapp.ui.movie.list.theater.MovieListTheaterDecorator
-
-val theaterAdapter = MovieListTheaterAdapter()
-val castAdapter = MovieCreditsAdapter()
 
 @BindingAdapter("inTheater")
 fun RecyclerView.inTheaterMovies(movies: List<Movie>?) {
+    val theaterAdapter = GenericAdapter<Movie>(R.layout.item_in_theater)
     adapter = theaterAdapter
 
     if (itemDecorationCount == 0) {
@@ -27,6 +23,7 @@ fun RecyclerView.inTheaterMovies(movies: List<Movie>?) {
 
 @BindingAdapter("credits")
 fun RecyclerView.credits(credits: List<Credits>?) {
+    val castAdapter = GenericAdapter<Credits>(R.layout.item_cast_card)
     adapter = castAdapter
 
     if (itemDecorationCount == 0) {

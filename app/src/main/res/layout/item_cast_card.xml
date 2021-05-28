@@ -4,7 +4,7 @@
     <data>
 
         <variable
-            name="credit"
+            name="baseModel"
             type="com.burkclik.movieapp.data.remote.model.Credits" />
     </data>
 
@@ -22,7 +22,7 @@
             android:layout_height="64dp"
             android:layout_gravity="center"
             android:scaleType="centerCrop"
-            app:imageUrl="@{credit.profilePath}"
+            app:imageUrl="@{baseModel.profilePath}"
             app:shapeAppearanceOverlay="@style/Widget.MovieApp.RoundedImageView"
             tools:src="@tools:sample/backgrounds/scenic" />
 
@@ -33,7 +33,7 @@
             android:layout_marginTop="6dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="@{credit.name}"
+            android:text="@{baseModel.name}"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="12sp"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="@{credit.character}"
+            android:text="@{baseModel.character}"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="12sp"
