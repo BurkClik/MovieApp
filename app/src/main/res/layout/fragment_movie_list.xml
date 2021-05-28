@@ -31,12 +31,12 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewInTheater"
+            inTheater="@{viewModel.onTheaterMovies}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layoutAnimation="@anim/layout_animation"
             android:orientation="horizontal"
-            app:inTheater="@{viewModel.onTheaterMovies}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/guidelineStart"
