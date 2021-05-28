@@ -1,6 +1,5 @@
 package com.burkclik.movieapp.common
 
-import com.burkclik.movieapp.API_KEY
 import com.burkclik.movieapp.data.remote.model.CastResponse
 import com.burkclik.movieapp.data.remote.model.Genres
 import com.burkclik.movieapp.data.remote.model.MovieDetail

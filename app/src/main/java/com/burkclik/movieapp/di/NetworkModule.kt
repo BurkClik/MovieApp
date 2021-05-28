@@ -1,7 +1,7 @@
 package com.burkclik.movieapp.di
 
 import android.app.Application
-import com.burkclik.movieapp.BASE_URL
+import com.burkclik.movieapp.common.BASE_URL
 import com.burkclik.movieapp.common.MovieApi
 import dagger.Module
 import dagger.Provides
