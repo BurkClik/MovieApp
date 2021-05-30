@@ -1,5 +1,6 @@
-package com.burkclik.movieapp.common
+package com.burkclik.movieapp.data.remote
 
+import com.burkclik.movieapp.common.API_KEY
 import com.burkclik.movieapp.data.remote.model.CastResponse
 import com.burkclik.movieapp.data.remote.model.Genres
 import com.burkclik.movieapp.data.remote.model.MovieDetail
@@ -9,9 +10,9 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface MovieApi {
+interface MovieService {
     @GET("/3/movie/now_playing")
-    suspend fun fetchTheaterMovies(@Query("api_key") apiKey: String): Response<MovieResponse>
+    suspend fun fetchTheaterMovies(@Query("api_key") apiKey: String = API_KEY): MovieResponse
 
     @GET("/3/discover/movie")
     suspend fun fetchMovieByGenre(
@@ -28,7 +29,7 @@ interface MovieApi {
     suspend fun fetchRelatedMovies(
         @Path("movie_id") movieId: Int,
         @Query("api_key") apiKey: String = API_KEY
-    ): MovieResponse
+    ): Response<MovieResponse>
 
     @GET("/3/movie/{movie_id}/credits")
     suspend fun fetchMovieCredits(
@@ -40,5 +41,5 @@ interface MovieApi {
     suspend fun fetchMovieDetail(
         @Path("movie_id") movieId: Int,
         @Query("api_key") apiKey: String = API_KEY,
-    ): MovieDetail
+    ): Response<MovieDetail>
 }

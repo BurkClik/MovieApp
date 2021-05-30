@@ -1,4 +1,4 @@
-package com.burkclik.movieapp.common
+package com.burkclik.movieapp.common.base
 
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil
