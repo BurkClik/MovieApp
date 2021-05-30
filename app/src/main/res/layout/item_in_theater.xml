@@ -5,7 +5,7 @@
 
         <variable
             name="baseModel"
-            type="com.burkclik.movieapp.data.remote.model.Movie" />
+            type="com.burkclik.movieapp.domain.model.MovieItem" />
     </data>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -16,8 +16,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageViewInTheaterMovies"
+            demoImageUrl="@{baseModel.imageUrl}"
             android:layout_width="104dp"
-            app:imageUrl="@{baseModel.posterPath}"
             android:layout_height="146dp"
             android:scaleType="centerCrop"
             app:shapeAppearanceOverlay="@style/roundedCornersImageView"

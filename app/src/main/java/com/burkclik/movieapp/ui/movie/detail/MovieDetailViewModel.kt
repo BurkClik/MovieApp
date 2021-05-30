@@ -1,39 +1,88 @@
 package com.burkclik.movieapp.ui.movie.detail
 
-import androidx.lifecycle.*
-import com.burkclik.movieapp.data.MovieRepository
-import com.burkclik.movieapp.data.remote.model.Credits
-import com.burkclik.movieapp.data.remote.model.Movie
-import com.burkclik.movieapp.data.remote.model.MovieDetail
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.burkclik.movieapp.common.Result
+import com.burkclik.movieapp.domain.MovieUseCase
+import com.burkclik.movieapp.domain.model.CreditsItem
+import com.burkclik.movieapp.domain.model.MovieDetailItem
+import com.burkclik.movieapp.domain.model.MovieItem
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
-    private val movieRepository: MovieRepository,
+    private val movieUseCase: MovieUseCase,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
-    private val _movie = MutableLiveData<MovieDetail>()
-    val movie: LiveData<MovieDetail> = _movie
+    private val _movie = MutableLiveData<MovieDetailItem?>()
+    val movie: LiveData<MovieDetailItem?> = _movie
 
-    private val _relatedMovies = MutableLiveData<List<Movie>>()
-    val relatedMovies: LiveData<List<Movie>> = _relatedMovies
+    private val _relatedMovies = MutableLiveData<List<MovieItem>?>()
+    val relatedMovies: LiveData<List<MovieItem>?> = _relatedMovies
 
-    private val _creditsMovies = MutableLiveData<List<Credits>>()
-    val creditsMovie: LiveData<List<Credits>> = _creditsMovies
+    private val _creditsMovies = MutableLiveData<List<CreditsItem>>()
+    val creditsMovie: LiveData<List<CreditsItem>> = _creditsMovies
 
     private val movieId: Int = savedStateHandle["movieId"]!!
 
     init {
-        demo()
+        relatedMovie()
+        credits()
+        movieDetail()
     }
 
-    private fun demo() {
+    private fun movieDetail() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = movieUseCase.movieDetail(movieId)
+            launch(Dispatchers.Main) {
+                when (result) {
+                    is Result.Success -> {
+                        if (result.data != null) {
+                            _movie.value = result.data
+                        } else {
+                            _movie.value = null
+                        }
+                    }
+                    is Result.Error -> Log.i("Burak", result.message!!)
+                    is Result.Loading -> TODO()
+                }
+            }
+        }
+    }
+
+    private fun credits() {
         viewModelScope.launch {
-            _movie.postValue(movieRepository.getMovieDetail(movieId))
-            _relatedMovies.postValue(movieRepository.getRelatedMovies(movieId).results)
-            _creditsMovies.postValue(movieRepository.getCreditsMovie(movieId).cast)
+            Log.i("Burak", Thread.currentThread().name)
+            val result = movieUseCase.credits(movieId)
+            _creditsMovies.value = result
+        }
+    }
+
+    private fun relatedMovie() {
+        viewModelScope.launch(Dispatchers.IO) {
+            Log.i("Burak", Thread.currentThread().name)
+            val result = movieUseCase.relatedMovies(movieId)
+            launch(Dispatchers.Main) {
+                when (result) {
+                    is Result.Success -> {
+                        if (result.data != null) {
+                            val movies = result.data
+                            _relatedMovies.value = movies
+                        } else {
+                            _relatedMovies.value = null
+                        }
+                    }
+                    is Result.Error -> Log.i("Burak", result.message!!)
+                    is Result.Loading -> TODO()
+                }
+            }
         }
     }
 }

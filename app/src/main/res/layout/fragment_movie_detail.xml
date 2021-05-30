@@ -41,10 +41,10 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageViewMovieBackdrop"
+                demoImageUrl="@{viewModel.movie.backdropPath}"
                 android:layout_width="0dp"
                 android:layout_height="240dp"
                 android:scaleType="centerCrop"
-                app:imageUrl="@{viewModel.movie.backdropPath}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -52,11 +52,11 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageViewMoviePoster"
+                demoImageUrl="@{viewModel.movie.posterPath}"
                 android:layout_width="100dp"
                 android:layout_height="140dp"
                 android:layout_marginEnd="24dp"
                 android:scaleType="centerCrop"
-                app:imageUrl="@{viewModel.movie.posterPath}"
                 app:layout_constraintBottom_toBottomOf="@id/textViewTagline"
                 app:layout_constraintEnd_toStartOf="@id/textViewTagline"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
@@ -87,10 +87,10 @@
 
             <TextView
                 android:id="@+id/textViewVote"
-                convertToString="@{viewModel.movie.voteAverage}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:text="@{viewModel.movie.voteAverage}"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@id/imageViewVoteIcon"
@@ -110,10 +110,10 @@
 
             <TextView
                 android:id="@+id/textViewRuntime"
-                convertToString="@{viewModel.movie.runtime}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:text="@{viewModel.movie.runtime}"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@id/imageViewRuntimeIcon"
@@ -133,10 +133,10 @@
 
             <TextView
                 android:id="@+id/textViewRevenue"
-                convertToString="@{viewModel.movie.revenue}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:text="@{viewModel.movie.revenue}"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@id/imageViewRevenueIcon"
@@ -189,6 +189,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:layoutAnimation="@anim/layout_animation"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -210,6 +211,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewRelatedMovies"
+                inTheater="@{viewModel.relatedMovies}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
