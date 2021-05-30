@@ -1,18 +1,17 @@
 package com.burkclik.movieapp.common
 
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.burkclik.movieapp.R
-import com.burkclik.movieapp.data.remote.model.Credits
-import com.burkclik.movieapp.data.remote.model.Movie
+import com.burkclik.movieapp.domain.model.CreditsItem
+import com.burkclik.movieapp.domain.model.MovieItem
 import com.burkclik.movieapp.ui.movie.list.theater.MovieListTheaterDecorator
 
 @BindingAdapter("inTheater")
-fun RecyclerView.inTheaterMovies(movies: List<Movie>?) {
-    val theaterAdapter = GenericAdapter<Movie>(R.layout.item_in_theater)
+fun RecyclerView.inTheaterMovies(movies: List<MovieItem>?) {
+    val theaterAdapter = GenericAdapter<MovieItem>(R.layout.item_in_theater)
     adapter = theaterAdapter
 
     if (itemDecorationCount == 0) {
@@ -22,8 +21,8 @@ fun RecyclerView.inTheaterMovies(movies: List<Movie>?) {
 }
 
 @BindingAdapter("credits")
-fun RecyclerView.credits(credits: List<Credits>?) {
-    val castAdapter = GenericAdapter<Credits>(R.layout.item_cast_card)
+fun RecyclerView.credits(credits: List<CreditsItem>?) {
+    val castAdapter = GenericAdapter<CreditsItem>(R.layout.item_cast_card)
     adapter = castAdapter
 
     if (itemDecorationCount == 0) {
@@ -41,7 +40,11 @@ fun ImageView.imageUrl(imageUrl: String?) {
     }
 }
 
-@BindingAdapter("convertToString")
-fun TextView.convertToString(data: Any?) {
-    this.text = data.toString()
+@BindingAdapter("demoImageUrl")
+fun ImageView.demoImageUrl(imageUrl: String?) {
+    imageUrl?.let {
+        Glide.with(this)
+            .load(imageUrl)
+            .into(this)
+    }
 }
