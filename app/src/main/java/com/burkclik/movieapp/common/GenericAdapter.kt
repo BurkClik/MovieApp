@@ -8,6 +8,8 @@ import androidx.databinding.ViewDataBinding
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.burkclik.movieapp.common.base.BaseItemCallback
+import com.burkclik.movieapp.common.base.BaseModel
 
 class GenericAdapter<T : BaseModel>(@LayoutRes val layoutId: Int) :
     ListAdapter<T, GenericAdapter.GenericViewHolder<T>>(BaseItemCallback<T>()) {

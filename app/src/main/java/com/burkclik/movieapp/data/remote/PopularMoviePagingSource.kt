@@ -2,26 +2,25 @@ package com.burkclik.movieapp.data.remote
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.burkclik.movieapp.common.MovieApi
-import com.burkclik.movieapp.data.remote.model.Movie
+import com.burkclik.movieapp.data.remote.model.MovieResponse
 import retrofit2.HttpException
 import java.io.IOException
 
 
-class PopularMoviePagingSource(private val movieApi: MovieApi) :
-    PagingSource<Int, Movie>() {
-    override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
+class PopularMoviePagingSource(private val movieService: MovieService) :
+    PagingSource<Int, MovieResponse>() {
+    override fun getRefreshKey(state: PagingState<Int, MovieResponse>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
                 ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
         }
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieResponse> {
         val position = params.key ?: STARTING_INDEX
         return try {
             val response =
-                movieApi.fetchMovieByGenre(position)
+                movieService.fetchMovieByGenre(position)
             val movies = response.results
             val nextKey = if (movies.isEmpty()) {
                 null

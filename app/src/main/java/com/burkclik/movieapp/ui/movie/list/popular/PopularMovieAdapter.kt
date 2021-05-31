@@ -5,13 +5,13 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.burkclik.movieapp.data.remote.model.Movie
+import com.burkclik.movieapp.data.remote.model.MovieResponse
 import com.burkclik.movieapp.databinding.ItemPopularMoviesBinding
 
 class PopularMovieAdapter :
-    PagingDataAdapter<Movie, PopularMovieAdapter.GenreViewHolder>(DIFF_CALLBACK) {
+    PagingDataAdapter<MovieResponse, PopularMovieAdapter.GenreViewHolder>(DIFF_CALLBACK) {
 
-    var itemClickListener: (Movie) -> Unit = {}
+    var itemClickListener: (MovieResponse) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenreViewHolder {
         val binding =
@@ -25,10 +25,10 @@ class PopularMovieAdapter :
 
     class GenreViewHolder(
         private val binding: ItemPopularMoviesBinding,
-        private val itemClickListener: (Movie) -> Unit
+        private val itemClickListener: (MovieResponse) -> Unit
     ) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(movie: Movie) {
+        fun bind(movie: MovieResponse) {
             binding.movie = movie
 
             binding.imageViewPopularItem.setOnClickListener {
@@ -38,10 +38,12 @@ class PopularMovieAdapter :
     }
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Movie>() {
-            override fun areItemsTheSame(oldItem: Movie, newItem: Movie) = oldItem.id == newItem.id
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<MovieResponse>() {
+            override fun areItemsTheSame(oldItem: MovieResponse, newItem: MovieResponse) =
+                oldItem.id == newItem.id
 
-            override fun areContentsTheSame(oldItem: Movie, newItem: Movie) = oldItem == newItem
+            override fun areContentsTheSame(oldItem: MovieResponse, newItem: MovieResponse) =
+                oldItem == newItem
         }
     }
 }
