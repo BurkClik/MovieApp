@@ -1,6 +1,6 @@
 package com.burkclik.movieapp.data.remote.model
 
-data class Genres(
+data class GenresResponse(
     val id: Int,
     val name: String
 )

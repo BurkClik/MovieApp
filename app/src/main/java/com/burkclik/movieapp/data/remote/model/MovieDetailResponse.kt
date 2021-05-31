@@ -2,7 +2,7 @@ package com.burkclik.movieapp.data.remote.model
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieDetail(
+data class MovieDetailResponse(
     @SerializedName("id")
     val id: Int,
     @SerializedName("imdb_id")
@@ -10,7 +10,7 @@ data class MovieDetail(
     @SerializedName("overview")
     val overview: String?,
     @SerializedName("genres")
-    val genres: List<Genres>,
+    val genres: List<GenresResponse>,
     @SerializedName("runtime")
     val runtime: Int?,
     @SerializedName("title")
