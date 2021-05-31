@@ -1,6 +1,5 @@
 package com.burkclik.movieapp.ui.movie.list
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,8 +7,10 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.burkclik.movieapp.common.navigation.Navigation
-import com.burkclik.movieapp.data.MovieRepository
-import com.burkclik.movieapp.data.remote.model.Movie
+import com.burkclik.movieapp.data.PopularMovieRepository
+import com.burkclik.movieapp.data.remote.model.MovieResponse
+import com.burkclik.movieapp.domain.model.MovieItem
+import com.burkclik.movieapp.domain.usecase.MovieNowPlayingUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
@@ -17,37 +18,38 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieListViewModel @Inject constructor(
-    private val movieRepository: MovieRepository
+    private val popularMovieRepository: PopularMovieRepository,
+    private val movieNowPlayingUseCase: MovieNowPlayingUseCase
 ) : ViewModel() {
-    private val _onTheaterMovies = MutableLiveData<List<Movie>?>()
-    val onTheaterMovies: LiveData<List<Movie>?> = _onTheaterMovies
+    private val _onTheaterMovies = MutableLiveData<List<MovieItem>?>()
+    val onTheaterMovies: LiveData<List<MovieItem>?> = _onTheaterMovies
 
-    var popularMovies: Flow<PagingData<Movie>>? = null
+    var popularMovies: Flow<PagingData<MovieResponse>>? = null
 
     val navigation = Navigation()
 
-    val itemClickListener: (Movie) -> Unit = {
+    val itemClickListener: (MovieResponse) -> Unit = {
         val action = MovieListFragmentDirections.toMovieDetail(it.id)
         navigation.navigate(action)
     }
 
     init {
-        Log.i("ViewModel", "viewModel init...")
+        getMoviesNowPlaying()
+    }
+
+    private fun getMoviesNowPlaying() {
         viewModelScope.launch {
-            val response = movieRepository.getTheaterMovies()
-            if (response.isSuccessful) {
-                _onTheaterMovies.postValue(response.body()!!.results)
-            }
+            _onTheaterMovies.value = movieNowPlayingUseCase.movieNowPlaying().data
         }
     }
 
-    fun getPopular(): Flow<PagingData<Movie>> {
+    fun getPopular(): Flow<PagingData<MovieResponse>> {
         val lastResult = popularMovies
         if (lastResult != null) {
             return lastResult
         }
-        val newResult: Flow<PagingData<Movie>> =
-            movieRepository.getPopularMovies().cachedIn(viewModelScope)
+        val newResult: Flow<PagingData<MovieResponse>> =
+            popularMovieRepository.getPopularMovies().cachedIn(viewModelScope)
 
         popularMovies = newResult
         return newResult

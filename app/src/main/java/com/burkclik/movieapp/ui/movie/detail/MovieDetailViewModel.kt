@@ -7,18 +7,21 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.burkclik.movieapp.common.Result
-import com.burkclik.movieapp.domain.MovieUseCase
 import com.burkclik.movieapp.domain.model.CreditsItem
 import com.burkclik.movieapp.domain.model.MovieDetailItem
 import com.burkclik.movieapp.domain.model.MovieItem
+import com.burkclik.movieapp.domain.usecase.CastUseCase
+import com.burkclik.movieapp.domain.usecase.MovieRelatedUseCase
+import com.burkclik.movieapp.domain.usecase.MovieUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
     private val movieUseCase: MovieUseCase,
+    private val castUseCase: CastUseCase,
+    private val movieRelatedUseCase: MovieRelatedUseCase,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     private val _movie = MutableLiveData<MovieDetailItem?>()
@@ -39,49 +42,31 @@ class MovieDetailViewModel @Inject constructor(
     }
 
     private fun movieDetail() {
-        viewModelScope.launch(Dispatchers.IO) {
-            val result = movieUseCase.movieDetail(movieId)
-            launch(Dispatchers.Main) {
-                when (result) {
-                    is Result.Success -> {
-                        if (result.data != null) {
-                            _movie.value = result.data
-                        } else {
-                            _movie.value = null
-                        }
-                    }
-                    is Result.Error -> Log.i("Burak", result.message!!)
-                    is Result.Loading -> TODO()
-                }
+        viewModelScope.launch {
+            when (val result = movieUseCase.movieDetail(movieId)) {
+                is Result.Success -> _movie.value = result.data
+                is Result.Error -> Log.i("Burak", "movieDetail Error -> ${result.message}")
+                is Result.Loading -> TODO()
             }
         }
     }
 
     private fun credits() {
         viewModelScope.launch {
-            Log.i("Burak", Thread.currentThread().name)
-            val result = movieUseCase.credits(movieId)
-            _creditsMovies.value = result
+            when (val result = castUseCase.credits(movieId)) {
+                is Result.Success -> _creditsMovies.value = result.data!!
+                is Result.Error -> Log.i("Burak", result.message!!)
+                is Result.Loading -> TODO()
+            }
         }
     }
 
     private fun relatedMovie() {
-        viewModelScope.launch(Dispatchers.IO) {
-            Log.i("Burak", Thread.currentThread().name)
-            val result = movieUseCase.relatedMovies(movieId)
-            launch(Dispatchers.Main) {
-                when (result) {
-                    is Result.Success -> {
-                        if (result.data != null) {
-                            val movies = result.data
-                            _relatedMovies.value = movies
-                        } else {
-                            _relatedMovies.value = null
-                        }
-                    }
-                    is Result.Error -> Log.i("Burak", result.message!!)
-                    is Result.Loading -> TODO()
-                }
+        viewModelScope.launch {
+            when (val result = movieRelatedUseCase.movieRelated(movieId)) {
+                is Result.Success -> _relatedMovies.value = result.data
+                is Result.Error -> Log.i("Burak", "movieRelated Error -> ${result.message}")
+                is Result.Loading -> TODO()
             }
         }
     }
