@@ -11,7 +11,7 @@
 - [Paging 3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview) - The Paging library helps you load and display pages of data from a larger dataset from local storage or over network.
 
 ## MAD Score
-![kotlin](https://user-images.githubusercontent.com/29648057/120185108-71da4400-c21a-11eb-8526-a8935f9c1f78.png)
+![summary](https://user-images.githubusercontent.com/29648057/120185381-c8e01900-c21a-11eb-81e2-2d098843f4df.png)
 
 ## Architecture
 MovieApp is based on MVVM architecture and a repository pattern.
